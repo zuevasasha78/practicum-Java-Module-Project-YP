@@ -15,26 +15,26 @@ public class Calculator {
 
     public void requestData() {
         while (true) {
-            System.out.println("Input name of good");
+            System.out.println("Введите имя товара");
             String nameOfGoods = scanner.next();
             if (nameOfGoods.equalsIgnoreCase("ЗАВЕРШИТЬ")) {
                 break;
             }
 
-            System.out.println("Input price of goods in format 'рубли.копейки' for example 10.40");
+            System.out.println("Введите цену товара в формате 'рубли.копейки' например 10.40");
 
             double priceOfGoods;
             while (true) {
                 if (!scanner.hasNextDouble()) {
-                    System.out.println("Your price incorrect. Input price of goods in format 'рубли.копейки' for example 10.40");
+                    System.out.println("Некорректная цена товара. Введите цену товара в формате 'рубли.копейки' например 10.40");
                     scanner.next();
                 } else {
                     priceOfGoods = scanner.nextDouble();
                     if (priceOfGoods > 0) {
                         break;
                     } else {
-                        System.out.println("Your price incorrect. Price should be bigger than 0." +
-                            " Input price of goods in format 'рубли.копейки' for example 10.40");
+                        System.out.println("Некорректная цена товара. Цена товара должна быть больше 0" +
+                            " Введите цену товара в формате 'рубли.копейки' например 10.40");
                     }
                 }
             }
@@ -53,10 +53,10 @@ public class Calculator {
             double pricePerPerson = goods.price / amountOfPeople;
             totalAmount += pricePerPerson;
 
-            System.out.println(String.format("%s price per person %.2f %s",
+            System.out.println(String.format("Цена за %s на челока %.2f %s",
                 goods.name, pricePerPerson, rubPlurals(pricePerPerson)));
         }
-        System.out.println(String.format("Total amount per person : %.2f %s", totalAmount, rubPlurals(totalAmount)));
+        System.out.println(String.format("Полная сумма на человека : %.2f %s", totalAmount, rubPlurals(totalAmount)));
     }
 
     private String rubPlurals(double num) {
